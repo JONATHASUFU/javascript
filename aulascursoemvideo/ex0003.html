@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tratamento de dados- conversão</title>
+</head>
+<body>   
+
+
+    <script>
+        //var n1=window.prompt('digite um numero:') //  recebe string
+        //var n2=window.prompt('digite um segundo numero:') // recebe string
+        //var s=n1+n2
+        //window.alert(' a soma dos valores:'+ s ) // concatenação
+        //number + number adicao 
+        //string + string concatenação
+        // temos que converter a string para numermo
+        // Number.parseInt(n) numero inteiro
+        // Number.parseFloat(n) numero com casa decimal
+        // Number(n) javasript escolher tem que ser Maiscula
+        var n1=parseInt(window.prompt('digite um numero:')) //  recebe string
+        var n2=parseFloat(window.prompt('digite um segundo numero decimal:')) // recebe string
+        var n3=Number(window.prompt('digite um segundo terceiro numero:')) // recebe string
+        var s=n1+n2+n3
+        window.alert(' a soma dos valores:n1+n2+n3='+ String(s)) // concatenação
+        window.alert(`a soma dos valores:${n1}+${n2}+${n3}=${s}`) // concatenação
+        // String(n)
+        //n.toString() para conversao de string
+        // para usar template string precisa estar entre crase ``
+        var j='javascript'
+        // j.lenght quantos caracteres tem a string
+        //j.toUpperCase() // tudo para  MAISCULAS
+        //j.toLowerCase() // tudo para minusculas
+        window.alert(`Eu estou aprendendo ${j.toUpperCase()}`)   
+        document.write(`A palavra javascrpit possui ${j.length} letras.`)
+        document.write(`A palavra javascrpit no modo possui ${j.length} letras.`)
+        var n4=10.12364
+        var salario=n4.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})
+        document.write(`O meus salario é de ${salario}`)
+     </script>    
+</body>
+</html>

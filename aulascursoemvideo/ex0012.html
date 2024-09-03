@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Despachos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestão de Despachos</h1>
+        <form id="despachoForm">
+            <input type="number" id="id" placeholder="ID" required>
+            <input type="date" id="data" required>
+            <input type="text" id="destinatario" placeholder="Destinatário" required>
+            <input type="text" id="status" placeholder="Status" required>
+            <input type="text" id="assunto" placeholder="Assunto" required>
+            <textarea id="conteudo" placeholder="Conteúdo" required></textarea>
+            <button type="submit">Adicionar Despacho</button>
+        </form>
+        <div id="despachosList">
+            <h2>Lista de Despachos</h2>
+            <ul id="listaDespachos"></ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

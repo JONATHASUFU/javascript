@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo appendChild</title>
+</head>
+
+<body>
+    Corpo do body
+    <div id="pai">Aqui esta a div MATTER</div>
+    <button onclick="adicionarDiv()">Adicionar Div</button>
+    <button onclick="adicionarDiv_nova()">Adicionar Div_nova</button>
+
+    <script>
+        function adicionarDiv() {
+            // Cria um novo elemento <div>
+            const novaDiv = document.createElement('div');
+
+            // Define algum conteúdo para a nova div
+            novaDiv.textContent = 'Esta é uma nova div adicionada ao body !';
+
+            // Seleciona o elemento pai (body) e adiciona a nova div como seu filho
+            document.body.appendChild(novaDiv);
+        }
+
+        function adicionarDiv_nova() {
+            // acessando o elemento div matter
+            //var divmatter=document.getElementById("pai");
+            var divmatter = document.querySelector("div#pai");
+            // Cria um novo elemento <div>
+
+            const novaDiv = document.createElement('div');
+
+            // Define algum conteúdo para a nova div
+            novaDiv.textContent = 'Esta é uma nova div adicionada apos a div !';
+
+            // Seleciona o elemento pai (body) e adiciona a nova div como seu filho
+            divmatter.appendChild(novaDiv);
+        }
+    </script>
+
+</body>
+
+</html>

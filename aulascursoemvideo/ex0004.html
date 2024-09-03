@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07 - operadores parte 1 e 2 </title>
+</head>
+<body>
+
+    <script>
+    // operadores aritmeticos, atribuição relacionais logicos e ternario
+    //+ - * / %(resto da divisao) **(potencia)
+    //precedencia () * / %  + -
+    var n=3
+    n+=4  // n=n+4 =7
+    n-=5  // n=n-5 =2
+    n*=4  // n=n*4 =8
+    n/=2  // n=n/2 =4
+    n**=2 // n=n**2 =16
+    n%=5  //n=n%5   =16/5= 3 resto 1
+    // Pos incremento
+    n-- // n=n-1 > n-=1
+    n++ // n=n+1 > n+=1  
+    document.write(`o resultado das operações ${n}<br> `) 
+    // operadores relacionais logicos ternarios
+    // > < >= <= == != === modo estrito
+    n='4'
+    document.write(`o resultado das operações ${4==n} <br>`) // true
+    document.write(`o resultado das operações ${4===n} <br>`) //false
+    //ordem de precedencia !(negacao) && (e - conjunçao) || (disjunção - ou )
+   
+    // Defina a função ehFimDeSemana
+    function ehFimDeSemana(data) {
+    var diaSemana = data.getDay();
+    return (diaSemana === 0 || diaSemana === 6); // 0 = Domingo, 6 = Sábado
+    }
+
+    // Criação explícita das datas
+    var data1 = new Date(2024, 7, 27); // 27 de agosto de 2024 (terça -feira)
+    var data2 = new Date(2024, 7, 31); // 31 de agosto de 2024 (Sábado)
+    // Meses em JavaScript: Lembre-se de que os meses são indexados a partir de 0. Assim, 7 corresponde a agosto.
+    // Exiba os resultados
+    document.write(`A data ${data1.toDateString()} é fim de semana? ${ehFimDeSemana(data1)}<br>`);
+    document.write(`A data ${data2.toDateString()} é fim de semana? ${ehFimDeSemana(data2)}<br>`);
+
+// Função para formatar a data no formato "27 de agosto de 2024"
+function formatarDataPorExtenso(data) {
+            const dias = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+            const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+            return `${data.getDate()} de ${meses[data.getMonth()]} de ${data.getFullYear()}`;
+        }
+
+        // Função para formatar a data no formato "31/08/2024"
+        function formatarDataCurta(data) {
+            const dia = String(data.getDate()).padStart(2, '0');
+            const mes = String(data.getMonth() + 1).padStart(2, '0'); // Meses em JavaScript são indexados a partir de 0
+            return `${dia}/${mes}/${data.getFullYear()}`;
+        }
+
+        // Criação das datas
+        var data3 = new Date(2024, 7, 27); // 27 de agosto de 2024 (terça-feira)
+        var data4 = new Date(2024, 7, 31); // 31 de agosto de 2024 (sábado)
+
+        // Exiba os resultados
+        document.write(`A data ${formatarDataPorExtenso(data3)} é fim de semana? ${ehFimDeSemana(data3)}<br>`);
+        document.write(`A data ${formatarDataCurta(data4)} é fim de semana? ${ehFimDeSemana(data4)}<br>`);
+
+    //operador ternario ? :
+    //teste ? true : false
+    // Verifica se data4 é maior que data3
+       var resultado = data4 > data3 ? 'verdadeiro' : 'falso';
+       console.log(resultado); // Saída: 'verdadeiro' // abrir no chrome na area de inspencionar!!!
+    </script>
+</body>
+</html>

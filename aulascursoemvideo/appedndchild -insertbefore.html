@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo de appendChild() e insertBefore()</title>
+</head>
+<body>
+
+<ul id="lista">
+    <li id="item1">Item 1</li>
+    <li id="item2">Item 2</li>
+</ul>
+
+<button onclick="adicionarNoFinal()">Adicionar no Final</button>
+<button onclick="adicionarAntes()">Adicionar Antes do Item 2</button>
+
+<script>
+    function adicionarNoFinal() {
+        // Cria um novo item de lista
+        const novoItem = document.createElement('li');
+        novoItem.textContent = 'Item Adicionado no Final';
+
+        // Seleciona a lista e adiciona o novo item no final usando appendChild
+        const lista = document.getElementById('lista');
+        lista.appendChild(novoItem);
+    }
+
+    function adicionarAntes() {
+        // Cria um novo item de lista
+        const novoItem = document.createElement('li');
+        novoItem.textContent = 'Item Adicionado Antes do Item 2';
+
+        // Seleciona a lista e o item de referência (Item 2)
+        const lista = document.getElementById('lista');
+        const item2 = document.getElementById('item2');
+
+        // Adiciona o novo item antes do Item 2 usando insertBefore
+        lista.insertBefore(novoItem, item2);
+    }
+</script>
+
+</body>
+</html>

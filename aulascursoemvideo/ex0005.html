@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pimeiros passo com DOM</title>
+<style>
+body {
+    background: darkcyan;
+    color:white;
+    font: normal 18pt arial; 
+}
+.highlight {
+            color: white;
+            background-color: green;
+        }
+</style>
+
+</head>
+
+<body>
+  <h1>Iniciando estudos sobre Dom (Document Object Model)</h1> 
+  <p> ARVORE <strong>DOM</strong> </p>
+  <p>Este é o segundo parágrafo.</p>
+  <p>Este é o terceiro parágrafo.</p>
+  <p>Este é o quarto parágrafo.</p>
+  <div id="msg"> Click AQUI, pelo id </div>
+  <div name="mx"> Click AQUI pela primeira vez, pelo name</div>
+  <div name="mx"> Click AQUI pela segunda vez,pelo name</div>
+  <div class="mm">Click AQUI pela terceria vez, pelo class</div>
+  <div class="mm">Click AQUI pela quarta vez, pelo class</div>
+  <div class="mm">Click AQUI pela quinta vez,pelo class</div>
+  <div id="mm">Click  quinta vez,pelo id mm usando querySelector</div>
+
+  <div class="tt">Click quinta vez,pelo class tt usando querySelector</div>
+  <div class="tt">Click quinta vez,pelo class tt usando querySelector</div>
+  <div class="tt">Click quinta vez,pelo class tt usando querySelector</div> 
+
+  <div class="highlight" name="mx1">Div com name="mx1" e classe highlight</div>
+  <p class="highlight" name="mx1">Parágrafo com name="mx1" e classe highlight</p>
+  <span name="another">Span com name="another"</span>
+  
+
+ 
+
+<script>
+    const elemento = document.getElementById('msg')
+    elemento.style.background='green'
+    /*                      name                     */
+    const elemento3=document.getElementsByName('mx')
+    elemento3[0].style.color='rgb(0, 0, 0)'
+    elemento3[1].style.color='rgb(58, 53, 24)'
+     /*                      class                    */
+    const elemento2 = document.getElementsByClassName('mm')
+    elemento2[0].style.color='rgb(0, 0, 0)'
+    elemento2[1].style.color='rgb(255, 0, 0)'
+    elemento2[2].style.color='rgb(0, 255, 0)'
+    /*                 document.querySelector(selector)                   */
+    const elemento4=document.querySelector('div#mm')
+    elemento4.style.color='rgb(255, 255,0)'//cor amarela
+    const elemento5=document.querySelectorAll('.tt').forEach(elemento => {
+        elemento.style.color = 'rgb(255, 105, 180)'; // Cor rosa
+    });
+    // Seleciona todos os elementos com o atributo name="mx" e a classe highlight//
+    const elementos6 = document.querySelectorAll('[name="mx1"].highlight');
+    // Itera sobre os elementos e aplica um estilo adicional
+    elementos6.forEach(elemento => {
+        elemento6.style.border = '20px solid red'; // Adiciona uma borda vermelha
+    });
+</script>
+</body>
+</html>

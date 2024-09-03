@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Nacionalidade</title>
+</head>
+<body>
+    <h1>Sistema Nacionalidade</h1>
+    Voce  nasceu em qual pais ? <input type="text" name="nas" id="nas"> 
+    <input type="button" value="verificar" onclick="estrangeiro()">
+
+<div id="res"> </div>
+
+<script>
+    function estrangeiro(){
+        var pais=window.document.getElementById("nas").value.toLowerCase(); // Converter para minúsculas
+        
+        if(pais==='brasil') {
+            res.innerHTML = `<p>Voce é brasileiro!!!</p>`
+        } else {
+         res.innerHTML = `<p>Voce é estrangeiro!!!</p>`
+        }
+    }
+   
+</script>
+</body>
+</html>

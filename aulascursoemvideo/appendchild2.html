@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo de Nó de Texto</title>
+</head>
+<body>
+
+<p id="paragrafo">Texto original do parágrafo.</p>
+<button onclick="adicionarTexto()">Adicionar Texto</button>
+
+<script>
+    function adicionarTexto() {
+        // Cria um novo nó de texto
+        const textoAdicional = document.createTextNode(' Texto adicional.');
+
+        // Seleciona o parágrafo existente
+        const paragrafo = document.getElementById('paragrafo');
+
+        // Adiciona o nó de texto ao parágrafo
+        paragrafo.appendChild(textoAdicional);
+    }
+</script>
+
+</body>
+</html>

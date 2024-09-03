@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Manipulação com appendChild</title>
+</head>
+<body>
+
+<ul id="lista">
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ul>
+<button onclick="adicionarItem()">Adicionar Item</button>
+
+<script>
+    function adicionarItem() {
+        // Cria um novo item de lista
+        const novoItem = document.createElement('li');
+
+        // Adiciona texto ao item de lista
+        novoItem.textContent = 'Novo Item';
+
+        // Adiciona uma classe ao novo item
+        novoItem.className = 'item-novo';
+
+        // Adiciona o novo item de lista ao final da lista
+        const lista = document.getElementById('lista');
+        lista.appendChild(novoItem);
+    }
+</script>
+
+</body>
+</html>

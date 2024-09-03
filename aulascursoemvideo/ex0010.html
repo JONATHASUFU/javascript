@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de multa</title>
+</head>
+<body>
+    <h1>Sistema de multa</h1>
+    Velocidade do carro: <input type="number" name="vel" id="vel"> km/h
+    <input type="button" value="verificar" onclick="calcular()">
+
+<div id="res"> </div>
+
+<script>
+    function calcular(){
+        var vel=window.document.getElementById("vel").value
+        var res=window.document.querySelector("div#res")
+        res.innerHTML = `<p>A sua velocidade atual é de ${vel11} km/h</p>`
+        if(vel>60) {
+
+            res.innerHTML += `<p>Voce foi multado!!!</p>`
+        }
+         res.innerHTML += `<p>Dirija sempre com o cinto de segurança</p>`
+    }
+
+    //Seu código está quase correto, mas o uso de ${vel} dentro de uma string literal comum não funciona. Para interpolar valores em uma string, você deve usar crases (``) para criar uma template string em JavaScript. Vou corrigir isso para você:
+</script>
+</body>
+</html>

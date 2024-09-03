@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+
+  div#area{
+    font: normal 30pt Arial; 
+    color: white;
+    background-color: red;
+    width:200px;
+    height:200px;
+    line-height:200px;
+    text-align:center;
+}
+</style>
+
+</head>
+
+
+<body>
+  /*lista de eventos*/
+  <!mouseenter/mousemove/mousedown/mouseup/Click/mouseout--> 
+  
+
+<div id="area" onclick=clicar() onmouseenter=entrar() onmouseout=sair()>Intereja</div>
+
+
+<script>
+    var div_area=window.document.getElementById("area")
+    function clicar()
+              {
+                div_area.innerText='clicou'           
+              }
+    function entrar()
+            {
+              div_area.style.background='green' 
+              div_area.innerText='Entrou'         
+              }
+    function sair()
+            {
+               div_area.style.background='red' 
+               div_area.innerText='Saiu'         
+              }                    
+
+</script>
+</body>
+</html>

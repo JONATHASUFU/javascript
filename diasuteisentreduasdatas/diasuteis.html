@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferença em Dias Úteis</title>
+</head>
+<body>
+    <script>
+        // Função para verificar se é fim de semana
+        function ehFimDeSemana(data) {
+            var diaSemana = data.getDay(); // retorna 0 a 6
+            return (diaSemana === 0 || diaSemana === 6); // 0 = Domingo, 6 = Sábado
+            // esta modo estrito ===  || ou ira retorna false ou true 
+        }
+
+        // Função para calcular a diferença em dias úteis
+        function calcularDiasUteis(dataInicial, dataFinal) {
+            var diasUteis = 0;
+            var dataAtual = new Date(dataInicial);
+
+            while (dataAtual <= dataFinal) {
+                if (!ehFimDeSemana(dataAtual)) {
+                    diasUteis++;
+                }
+                dataAtual.setDate(dataAtual.getDate() + 1);
+            }
+
+            return diasUteis;
+        }
+
+        // Exemplo de uso
+        var data1 = new Date("2024-08-01");
+        var data2 = new Date("2024-08-26");
+
+        var diferencaDiasUteis = calcularDiasUteis(data1, data2);
+
+        document.write(`A diferença entre as duas datas em dias úteis é de ${diferencaDiasUteis} dias.`);
+    </script>
+</body>
+</html>
