@@ -20,6 +20,10 @@
         const novoItem = document.createElement('li');
         novoItem.textContent = 'Item Adicionado no Final';
 
+         // Adiciona uma classe ao novo item
+         novoItem.className = 'item-novo-final';
+         novoItem.id="final" 
+
         // Seleciona a lista e adiciona o novo item no final usando appendChild
         const lista = document.getElementById('lista');
         lista.appendChild(novoItem);
@@ -30,6 +34,10 @@
         const novoItem = document.createElement('li');
         novoItem.textContent = 'Item Adicionado Antes do Item 2';
 
+        // Adiciona uma classe ao novo item
+        novoItem.className = 'item-novo-antes'
+        novoItem.id="antes"
+        
         // Seleciona a lista e o item de referência (Item 2)
         const lista = document.getElementById('lista');
         const item2 = document.getElementById('item2');

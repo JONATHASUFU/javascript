@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Spread Operator</title>
+    <style>
+        .item {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="item-container"></div>
+
+    <script>
+// Array de itens para adicionar ao DOM
+const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+
+// Seleciona o contêiner onde os itens serão adicionados
+const container = document.getElementById('item-container');
+
+// Função para criar um elemento HTML <div> para cada item
+const createItemElement = (text) => {
+    const item = document.createElement('div');
+    item.textContent = text;
+    item.className = 'item'; // Classe CSS opcional para estilo
+    return item;
+};
+
+// Utilizando spread operator para adicionar múltiplos elementos
+container.append(...items.map(createItemElement));
+        
+    </script>
+</body>
+</html>

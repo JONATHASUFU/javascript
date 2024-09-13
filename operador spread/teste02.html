@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrair Diferença de Datas</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+        .inputGroup {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Extrair Diferença de Datas</h2>
+    <div id="inputsContainer">
+        <div class="inputGroup">
+            <input type="text" placeholder="Digite as datas (Ex: Inicio de Exercicio: 19/02/2024 Fim de Exercicio: 10/07/2024)">
+        </div>        
+    </div>
+    <br>
+    <button onclick="adicionarInput()">Adicionar Novo Input</button>
+    <br><br><br>
+    <button onclick="mesclar()">Mesclar Células</button>
+    <br><br>
+    <table border="1" cellpadding="0px" cellspacing="0" style="margin-left:auto;margin-right:auto;width:100%;">
+        <colgroup></colgroup>
+        <tbody>
+            <tr>
+                <td colspan="10">
+                    <p class="I02_Justificado_12" contenteditable="false"><strong>DADOS FUNCIONAIS</strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <p class="I02_Justificado_12">DATA DE ADMISSÃO NO VÍNCULO 1:</p>
+                    <p class="I02_Justificado_12"><strong>NÃO SE APLICA</strong></p>
+                </td>
+                <td colspan="4">
+                    <p class="I02_Justificado_12">Nº DA PORTARIA DE NOMEAÇÃO:</p>
+                    <p class="I02_Justificado_12"><strong>NÃO SE APLICA</strong></p>
+                </td>
+                <td colspan="2" rowspan="2">
+                    <p class="I02_Justificado_12">DATA DE PUBLICAÇÃO:</p>
+                    <p class="I02_Justificado_12"><strong>NÃO SE APLICA</strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <p class="I02_Justificado_12">DATA DE DESLIGAMENTO NO VÍNCULO 1:</p>
+                    <p class="I02_Justificado_12"><strong>NÃO SE APLICA</strong></p>
+                </td>
+                <td colspan="4">
+                    <p class="I02_Justificado_12">Nº DA PORTARIA DE EXONERAÇÃO/DEMISSÃO:</p>
+                    <p class="I02_Justificado_12"><strong>NÃO SE APLICA</strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="10">
+                    <p class="I02_Justificado_12" contenteditable="false" style="text-align: center;"><strong>PERÍODO(S) DE TEMPO DE CONTRIBUIÇÃO</strong></p>
+                </td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td><p class="I03_Centralizado_12"><strong>SEQ.</strong></p></td>
+                <td><p class="I03_Centralizado_12"><strong>MATRICULA</strong><br>(coluna não presente no anexo IV, porém necessária na declaração de tempo de serviço do professor contrato temporário)</p></td>
+                <td><p class="I03_Centralizado_12"><strong>DATA INÍCIO </strong></p><p class="I03_Centralizado_12">DD/MM/AAAA</p></td>
+                <td colspan="2"><p class="I03_Centralizado_12"><strong>DATA FIM </strong></p><p class="I03_Centralizado_12">DD/MM/AAAA</p></td>
+                <td><p class="I03_Centralizado_12"><strong>PERÍODOS DE DIAS</strong><br>(coluna não presente no anexo IV, porém necessária na declaração de tempo de serviço do professor contrato temporário)</p></td>
+                <td><p class="I03_Centralizado_12"><strong>CARGO/FUNÇÃO</strong></p></td>
+                <td colspan="3"><p class="I03_Centralizado_12"><strong>CATEGORIA FUNCIONAL</strong></p></td>
+            </tr>
+        </tbody>
+        <tbody id="resultTableBody">
+            <!-- Linhas de resultados serão adicionadas aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        function extrairDatas(text) {
+            const regex = /(\d{2}\/\d{2}\/\d{4})/g;
+            const matches = text.match(regex);
+
+            if (matches && matches.length >= 2) {
+                const dataInicial = matches[0];
+                const dataFinal = matches[1];
+
+                const dataInicialDate = new Date(dataInicial.split('/').reverse().join('-'));
+                const dataFinalDate = new Date(dataFinal.split('/').reverse().join('-'));
+
+                const diffTime = Math.abs(dataFinalDate - dataInicialDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                return { periodo: `${dataInicial} a ${dataFinal}`, dias: diffDays };
+            }
+
+            return null;
+        }
+
+        function adicionarLinhaTabela(seq, periodo, dias) {
+            const tbody = document.getElementById('resultTableBody');
+
+            const newRow = document.createElement('tr');
+
+            const seqCell = document.createElement('td');
+            seqCell.innerHTML = `<p class="I03_Centralizado_12">${seq}</p>`;
+
+            const matriculaCell = document.createElement('td');
+            matriculaCell.innerHTML = `<p class="I03_Centralizado_12"><strong>Não Aplicável</strong></p>`;
+
+            const dataInicioCell = document.createElement('td');
+            dataInicioCell.innerHTML = `<p class="I03_Centralizado_12">${periodo.split(' a ')[0]}</p>`;
+
+            const dataFimCell = document.createElement('td');
+            dataFimCell.colSpan = 2;
+            dataFimCell.innerHTML = `<p class="I03_Centralizado_12">${periodo.split(' a ')[1]}</p>`;
+
+            const diasCell = document.createElement('td');
+            diasCell.innerHTML = `<p class="I03_Centralizado_12">${dias}</p>`;
+
+            const cargoFuncaoCell = document.createElement('td');
+            cargoFuncaoCell.innerHTML = `<p class="I03_Centralizado_12">PROFESSOR TEMPORÁRIO</p>`;
+
+            const categoriaFuncionalCell = document.createElement('td');
+            categoriaFuncionalCell.colSpan = 3;
+            categoriaFuncionalCell.innerHTML = `<p class="I03_Centralizado_12" style="text-align: left;"><span>(X) Contratado</span></p>`;
+
+            newRow.appendChild(seqCell);
+            newRow.appendChild(matriculaCell);
+            newRow.appendChild(dataInicioCell);
+            newRow.appendChild(dataFimCell);
+            newRow.appendChild(diasCell);
+            newRow.appendChild(cargoFuncaoCell);
+            newRow.appendChild(categoriaFuncionalCell);
+
+            tbody.appendChild(newRow);
+        }
+
+        function adicionarInput() {
+            const container = document.getElementById('inputsContainer');
+
+            const lastInput = container.lastElementChild.querySelector('input');
+            const resultado = extrairDatas(lastInput.value);
+
+            if (resultado) {
+                const seq = document.getElementById('resultTableBody').children.length + 1;
+                adicionarLinhaTabela(seq, resultado.periodo, resultado.dias);
+            } else {
+                alert("Por favor, insira um intervalo de datas válido no formato 'DD/MM/YYYY'.");
+                return;
+            }
+
+            const newInputGroup = document.createElement('div');
+            newInputGroup.className = 'inputGroup';
+
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.placeholder = 'Digite as datas (Ex: Inicio de Exercicio: 19/02/2024 Fim de Exercicio: 10/07/2024)';
+
+            newInputGroup.appendChild(newInput);
+            container.appendChild(newInputGroup);
+        }
+
+        function mesclar() {
+            const rows = document.querySelectorAll('#resultTableBody tr');
+            let currentCellValue = null;
+            let startRowIndex = 0;
+
+            rows.forEach((row, index) => {
+                const cargoFuncaoCell = row.cells[6];
+                const categoriaFuncionalCell = row.cells[7];
+                
+                if (cargoFuncaoCell && cargoFuncaoCell.innerText === 'PROFESSOR TEMPORÁRIO') {
+                    if (currentCellValue === null) {
+                        currentCellValue = cargoFuncaoCell.innerText;
+                        startRowIndex = index;
+                    } else if (currentCellValue === cargoFuncaoCell.innerText) {
+                        cargoFuncaoCell.style.display = 'none';
+                        categoriaFuncionalCell.style.display = 'none';
+                        rows[startRowIndex].cells[6].rowSpan = index - startRowIndex + 1;
+                    } else {
+                        currentCellValue = cargoFuncaoCell.innerText;
+                        startRowIndex = index;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

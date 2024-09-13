@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada com Spread Operator</title>
+    <style>
+        .result {
+            padding: 5px;
+            margin: 2px;
+            background-color: #e0f7fa;
+            border: 1px solid #00838f;
+            border-radius: 3px;
+            font-family: Arial, sans-serif;
+            color: #006064;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerar Tabuada</h1>
+    <label for="entrada">Número:</label>
+    <input id="entrada" type="number" min="1" placeholder="Digite um número">   
+    <div id="tabuada-container"></div> 
+    
+  
+    
+    
+    <script>
+
+     // Função para gerar a tabuada de um número
+        function generateTabuada(number) {
+                const range = [...Array(10).keys()].map(i => i + 1);
+                const results = range.map(i => `${number} x ${i} = ${number * i}`);
+                return results;
+            }
+
+// Função para criar um elemento HTML <div> para cada resultado
+const createResultElement = (text) => {
+    const result = document.createElement('div');
+    result.textContent = text;
+    result.className = 'result'; // Classe CSS opcional para estilo
+    return result;
+};
+
+// Função para gerar a tabuada e exibi-la no contêiner
+const generateAndDisplayTabuada = () => {
+    // Captura o valor do input
+    const inputElement = document.getElementById('entrada');
+    const number = parseInt(inputElement.value, 10);
+    //parseInt(string, radix)
+    //string: A string que você deseja converter em um número inteiro.
+    //radix: Um número que representa a base do sistema numérico (por exemplo, 10 para decimal).
+
+    // Verifica se o valor é um número válido
+    if (isNaN(number) || number < 1) {
+        alert('Por favor, insira um número válido.');
+        return;
+    }
+
+    // Gera a tabuada
+    const tabuada = generateTabuada(number);
+
+    // Seleciona o contêiner e limpa o conteúdo anterior
+    const container = document.getElementById('tabuada-container');
+    container.innerHTML = '';
+
+    // Adiciona os resultados ao contêiner
+    container.append(...tabuada.map(createResultElement));
+};
+
+// Adiciona um evento de input ao campo de entrada
+const inputElement = document.getElementById('entrada');
+inputElement.addEventListener('input', generateAndDisplayTabuada);
+</script>
+</body>
+</html>
+
+ <!-- <div id="tabuada-container">
+  /* <div class="result">5 x 1 = 5</div>
+  <div class="result">5 x 2 = 10</div>
+  <div class="result">5 x 3 = 15</div>
+  <div class="result">5 x 4 = 20</div>
+  <div class="result">5 x 5 = 25</div>
+  <div class="result">5 x 6 = 30</div>
+  <div class="result">5 x 7 = 35</div>
+  <div class="result">5 x 8 = 40</div>
+  <div class="result">5 x 9 = 45</div>
+  <div class="result">5 x 10 = 50</div>
+
+                </div> -->
+

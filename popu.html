@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo de Popup</title>
+    <style>
+        /* Estilos para o popup */
+        .popup {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 10;
+        }
+
+        /* Estilos para o fundo escuro */
+        .popup-background {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+
+        /* Botão de fechar */
+        .close-btn {
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+            float: right;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão para abrir o popup -->
+    <button id="open-popup-btn">Abrir Popup</button>
+
+    <!-- Fundo escuro do popup -->
+    <div class="popup-background" id="popup-bg"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <span class="close-btn" id="close-popup-btn">&times;</span>
+        <h2>Este é um popup!</h2>
+        <p>Este é um exemplo de popup em HTML, CSS e JavaScript.</p>
+    </div>
+
+    <script>
+        // Obtém elementos do DOM
+        const openPopupBtn = document.getElementById('open-popup-btn');
+        const closePopupBtn = document.getElementById('close-popup-btn');
+        const popup = document.getElementById('popup');
+        const popupBg = document.getElementById('popup-bg');
+
+        // Função para abrir o popup
+        openPopupBtn.addEventListener('click', () => {
+            popup.style.display = 'block';
+            popupBg.style.display = 'block';
+        });
+
+        // Função para fechar o popup
+        closePopupBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            popupBg.style.display = 'none';
+        });
+
+        // Fechar o popup ao clicar no fundo escuro
+        popupBg.addEventListener('click', () => {
+            popup.style.display = 'none';
+            popupBg.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
+<!-- Fundo escuro do popup Explicação do Código:
+
+HTML: Contém o botão para abrir o popup, o próprio popup e um fundo escuro (popup-background) para dar destaque
+ao popup.
+
+CSS: Estiliza o popup para que fique centralizado, com um fundo branco e uma sombra.
+O popup e o fundo escuro são inicialmente ocultos (display: none;).
+
+JavaScript: Adiciona eventos de clique para o botão de abrir o popup, o botão de fechar (&times;),
+ e para o fundo escuro.
+Quando o botão é clicado, o popup e o fundo aparecem; quando o botão de fechar ou o fundo é clicado,
+o popup e o fundo desaparecem.
+Esse código cria um popup funcional simples e é uma base que você pode expandir conforme necessário. -->
